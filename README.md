@@ -20,6 +20,23 @@ const t4 = new DateTimeOffset('2017-04-10 09:00:00', {
 });
 ```
 
+## Supported Timezones
+- UTC (Same GMT, Atlantic/Reykjavik)
+- KST (Smae UTC+9, Asia/Seoul)
+- EDT (Same UTC-4, America/New_York)
+- PDT (Same UTC-7, America/Vancouver)
+- JST (Same UTC+9, Asia/Tokyo)
+- CST (Smae UTC+8, Asia/Shanghai)
+
+- If you have a timezone you need, please add it to `timezone-consts.js` using http://momentjs.com/timezone.
+
+## Constructor
+### `DateTimeOffset(datetime, options)`;
+- date : Supported ISO 8601 strings [#](http://momentjs.com/docs/#/parsing/string/), if you using custom fomarts, refer `ptions.format`
+- options : object
+  - format : refer http://momentjs.com/docs/#/parsing/string-format/
+  - timezone : refer Supported Timezones
+
 ## Methods
 ### `toString(format = 'YYYY-MM-DD HH:mm:ss', timezone = 'GMT')`
 - Default `format` : YYYY-MM-DD HH:mm:ss
