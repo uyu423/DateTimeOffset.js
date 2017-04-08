@@ -1,6 +1,6 @@
 {
   "name": "datetime-offset",
-  "version": "0.1.0-alpha",
+  "version": "0.1.1-alpha",
   "description": "Javascript Class like C# DateTimeOffset Structure (mapping momnet-timezome)",
   "main": "index.js",
   "scripts": {
