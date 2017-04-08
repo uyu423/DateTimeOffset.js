@@ -13,7 +13,7 @@ const customTime2KST = '2017-04-10T08:50:00Z';
 const customTime3KST = '2017-04-10T09:10:00Z';
 
 describe('DateTimeOffset Method Tests', () => {
-  describe(`const datetime = DateTimeOffset(${customTime}, 'UTC')`, () => {
+  describe(`const datetime = new DateTimeOffset(${customTime})`, () => {
     it('datetime.addDays(10) expect 2017-04-20 00:00:00');
     it('datetime.addDays(-5) expect 2017-04-05 00:00:00');
     it('datetime.addHours(10) expect 2017-04-19 10:00:00');

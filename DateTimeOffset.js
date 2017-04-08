@@ -1,12 +1,18 @@
 import momentTimezone from 'moment-timezone';
 import tz from './timezone-consts';
 
-const moment = momentTimezone.tz.setDefault(tz.GMT);
+const defaultFormat = 'YYYY-MM-DD HH:mm:ss';
 
 export default class DateTimeOffset {
-  constructor(Date, timezone = tz.UTC) {
-    this.datetime = moment(Date).tz(timezone);
+  constructor(date, options = {}) {
+    const timezone = options.timezone || 'GMT';
+    const format = options.format || defaultFormat;
+    const moment = momentTimezone.tz.setDefault(tz[timezone]);
+    this.datetime = moment(date, format).tz(tz[timezone]);
     return this;
+  }
+  toString(format = defaultFormat, timezone = 'GMT') {
+    return this.datetime.tz(tz[timezone]).format(format);
   }
   addDays(number) {
     throw new Error('addDays undefined');
@@ -36,9 +42,6 @@ export default class DateTimeOffset {
     throw new Error('equals undefined');
   }
   static equals(datetimeOffsetA, dateTimeOffsetB) {
-    throw new Error('static equals undefined');
-  }
-  toString(format, timzone = tz.UTC) {
     throw new Error('static equals undefined');
   }
 }
