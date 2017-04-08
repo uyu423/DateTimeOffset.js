@@ -63,8 +63,16 @@ t4.toString(undefined, 'KST')  //  2017-04-10 09:00:00
 t4.toString('YYYY-MM-DD')  //  2017-04-10
 ```
 
-### addDays(number)
-- To be developed
+### `addDays(number)`
+```javascript
+const t = new DateTimeOffset(new Date(2017-04-10));
+console.log(t.addDays(10).toString()); // 2017-04-20 00:00:00
+console.log(t.addDays(-5).toString()); // 2017-04-15 00:00:00
+t.addDays(1, 1) // throw Error
+t.addDays('string') // throw Error
+t.addDays(null) // throw Error
+t.addDays(undefined) // throw Error
+```
 
 ### addHours(number)
 - To be developed

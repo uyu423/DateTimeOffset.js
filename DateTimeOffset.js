@@ -16,7 +16,10 @@ export default class DateTimeOffset {
     return this.datetime.tz(tz[timezone]).format(format);
   }
   addDays(number) {
-    throw new Error('addDays undefined');
+    if (arguments.length !== 1) throw new Error('addDays require 1 number argument');
+    if (typeof number !== 'number') throw new Error('addDays argument is not typeof number');
+    this.datetime.add(number, 'days');
+    return this;
   }
   addHours(number) {
     throw new Error('addHours undefined');
