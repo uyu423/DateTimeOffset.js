@@ -4,6 +4,8 @@ Javascript Class like C# DateTimeOffset Structure (mapping momnet-timezome)
 ## Default Usage
 ```javascript
 import DateTimeOffset from 'datetime-offset';
+// if using Require
+// const DateTimeOffset = require('datetime-offset').default
 
 const t1 = new DateTimeOffset(new Date());
 const t2 = new DateTimeOffset('2017-04-10 00:00:00', {

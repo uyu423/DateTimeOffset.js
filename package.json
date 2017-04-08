@@ -6,7 +6,7 @@
   "scripts": {
     "test": "./node_modules/.bin/babel-node ./node_modules/mocha/bin/_mocha --recursive ./test/*.spec.js",
     "test:watch": "./node_modules/.bin/babel-node ./node_modules/mocha/bin/_mocha --recursive ./test/*.spec.js --watch",
-    "build": "babel ./ --ignore node_modules,build,test -d ./build"
+    "build": "babel ./ --ignore node_modules,build,test -d ./build && cp package.json README.md build/"
   },
   "repository": {
     "type": "git",
