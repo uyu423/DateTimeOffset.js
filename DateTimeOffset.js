@@ -9,6 +9,7 @@ export default class DateTimeOffset {
     const format = options.format || defaultFormat;
     const moment = momentTimezone.tz.setDefault(tz[timezone]);
     this.datetime = moment(date, format).tz(tz[timezone]);
+    this.timezone = tz[timezone];
     return this;
   }
   toString(format = defaultFormat, timezone = 'GMT') {
