@@ -31,11 +31,11 @@ describe('Constructor Tests', () => {
   });
   it(`new DateTimeOffset(${dateCustom}) expect toString(undefined, 'UTC') 2017-04-10 00:00:00`, () => {
     const t = new DateTimeOffset(dateCustom);
-    expect(t.toString(undefined, 'UTC')).to.be.equal('2017-04-10 00:00:00');
+    expect(t.toString('UTC')).to.be.equal('2017-04-10 00:00:00');
   });
   it(`new DateTimeOffset(${dateCustom}) expect toString(undefined, 'KST') 2017-04-10 09:00:00`, () => {
     const t = new DateTimeOffset(dateCustom);
-    expect(t.toString(undefined, 'KST')).to.be.equal('2017-04-10 09:00:00');
+    expect(t.toString('KST')).to.be.equal('2017-04-10 09:00:00');
   });
   it(`new DateTimeOffset(${ctForm}, { format: 'YYYY-MM-DD HH:mm:ss' }) expect instaceof DateTimeOffset`, () => {
     const form = 'YYYY-MM-DD HH:mm:ss';

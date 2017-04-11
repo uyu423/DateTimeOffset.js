@@ -13,7 +13,7 @@ export default class DateTimeOffset {
     this.timezone = tz[timezone];
     return this;
   }
-  toString(format = defaultFormat, timezone = 'GMT') {
+  toString(timezone = 'GMT', format = defaultFormat) {
     if (!tz[timezone]) throw new Error(error.UNSUPPORTED_TZ);
     return this.datetime.tz(tz[timezone]).format(format);
   }

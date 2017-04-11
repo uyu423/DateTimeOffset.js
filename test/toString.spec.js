@@ -17,28 +17,28 @@ describe('toString Method Tests', () => {
       const t = new DateTimeOffset(customTime);
       expect(t.toString()).to.be.equal('2017-04-10 00:00:00');
     });
-    it('utc.toString(undefined, \'UTC\') expect 2017-04-10 00:00:00', () => {
+    it('utc.toString(\'UTC\') expect 2017-04-10 00:00:00', () => {
       const t = new DateTimeOffset(customTime);
-      expect(t.toString(undefined, 'UTC')).to.be.equal('2017-04-10 00:00:00');
+      expect(t.toString('UTC')).to.be.equal('2017-04-10 00:00:00');
     });
-    it('utc.toString(undefined, \'KST\') expect 2017-04-10 09:00:00', () => {
+    it('utc.toString(\'KST\') expect 2017-04-10 09:00:00', () => {
       const t = new DateTimeOffset(customTime);
-      expect(t.toString(undefined, 'KST')).to.be.equal('2017-04-10 09:00:00');
+      expect(t.toString('KST')).to.be.equal('2017-04-10 09:00:00');
     });
-    it('utc.toString(\'YYYY-MM-DD HH:mm:ss\') expect 2017-04-10 00:00:00', () => {
+    it('utc.toString(undefined, \'YYYY.MM.DD HH:mm:ss\') expect 2017-04-10 00:00:00', () => {
+      const t = new DateTimeOffset(customTime);
+      const form = 'YYYY.MM.DD HH:mm:ss';
+      expect(t.toString(undefined, form)).to.be.equal('2017.04.10 00:00:00');
+    });
+    it('utc.toString(\'UTC\', \'YYYY-MM-DD HH:mm:ss\') expect 2017-04-10 00:00:00', () => {
       const t = new DateTimeOffset(customTime);
       const form = 'YYYY-MM-DD HH:mm:ss';
-      expect(t.toString(form)).to.be.equal('2017-04-10 00:00:00');
+      expect(t.toString('UTC', form)).to.be.equal('2017-04-10 00:00:00');
     });
-    it('utc.toString(\'YYYY-MM-DD HH:mm:ss\', \'UTC\') expect 2017-04-10 00:00:00', () => {
+    it('utc.toString(\'KST\', \'YYYY-MM-DD HH:mm:ss\') expect 2017-04-10 09:00:00', () => {
       const t = new DateTimeOffset(customTime);
       const form = 'YYYY-MM-DD HH:mm:ss';
-      expect(t.toString(form, 'UTC')).to.be.equal('2017-04-10 00:00:00');
-    });
-    it('utc.toString(\'YYYY-MM-DD HH:mm:ss\', \'KST\') expect 2017-04-10 09:00:00', () => {
-      const t = new DateTimeOffset(customTime);
-      const form = 'YYYY-MM-DD HH:mm:ss';
-      expect(t.toString(form, 'KST')).to.be.equal('2017-04-10 09:00:00');
+      expect(t.toString('KST', form)).to.be.equal('2017-04-10 09:00:00');
     });
   });
   describe(`const utc = new DateTimeOffset('${customTimeForm}', { format: 'YYYY-MM-DD HH:mm:ss' })`, () => {
@@ -49,40 +49,40 @@ describe('toString Method Tests', () => {
       });
       expect(t.toString()).to.be.equal('2017-04-10 00:00:00');
     });
-    it('utc.toString(undefined, \'UTC\') expect 2017-04-10 00:00:00', () => {
+    it('utc.toString(\'UTC\') expect 2017-04-10 00:00:00', () => {
       const form = 'YYYY-MM-DD HH:mm:ss';
       const t = new DateTimeOffset(customTimeForm, {
         format: form,
       });
-      expect(t.toString(undefined, 'UTC')).to.be.equal('2017-04-10 00:00:00');
+      expect(t.toString('UTC')).to.be.equal('2017-04-10 00:00:00');
     });
-    it('utc.toString(undefined, \'KST\') expect 2017-04-10 09:00:00', () => {
+    it('utc.toString(\'KST\') expect 2017-04-10 09:00:00', () => {
       const form = 'YYYY-MM-DD HH:mm:ss';
       const t = new DateTimeOffset(customTimeForm, {
         format: form,
       });
-      expect(t.toString(undefined, 'KST')).to.be.equal('2017-04-10 09:00:00');
+      expect(t.toString('KST')).to.be.equal('2017-04-10 09:00:00');
     });
-    it('utc.toString(\'YYYY-MM-DD HH:mm:ss\') expect 2017-04-10 00:00:00', () => {
+    it('utc.toString(\'YYYY.MM.DD HH:mm:ss\') expect 2017-04-10 00:00:00', () => {
+      const form = 'YYYY.MM.DD HH:mm:ss';
+      const t = new DateTimeOffset(customTimeForm, {
+        format: form,
+      });
+      expect(t.toString(undefined, form)).to.be.equal('2017.04.10 00:00:00');
+    });
+    it('utc.toString(\'UTC\', \'YYYY-MM-DD HH:mm:ss\') expect 2017-04-10 00:00:00', () => {
       const form = 'YYYY-MM-DD HH:mm:ss';
       const t = new DateTimeOffset(customTimeForm, {
         format: form,
       });
-      expect(t.toString(form)).to.be.equal('2017-04-10 00:00:00');
+      expect(t.toString('UTC', form)).to.be.equal('2017-04-10 00:00:00');
     });
-    it('utc.toString(\'YYYY-MM-DD HH:mm:ss\', \'UTC\') expect 2017-04-10 00:00:00', () => {
-      const form = 'YYYY-MM-DD HH:mm:ss';
-      const t = new DateTimeOffset(customTimeForm, {
-        format: form,
-      });
-      expect(t.toString(form, 'UTC')).to.be.equal('2017-04-10 00:00:00');
-    });
-    it('utc.toString(\'YYYY-MM-DD HH:mm:ss\', \'KST\') expect 2017-04-10 09:00:00', () => {
+    it('utc.toString(\'KST\', \'YYYY-MM-DD HH:mm:ss\') expect 2017-04-10 09:00:00', () => {
       const form = 'YYYY-MM-DD HH:mm:ss';
       const t = new DateTimeOffset(customTime, {
         format: form,
       });
-      expect(t.toString(form, 'KST')).to.be.equal('2017-04-10 09:00:00');
+      expect(t.toString('KST', form)).to.be.equal('2017-04-10 09:00:00');
     });
   });
   describe(`const kst = new DateTimeOffset('${customTimeKST}', { format: 'YYYY-MM-DD HH:mm:ss', timezone: 'KST'})`, () => {
@@ -94,45 +94,45 @@ describe('toString Method Tests', () => {
       });
       expect(t.toString()).to.be.equal('2017-04-10 00:00:00');
     });
-    it('kst.toString(undefined, \'UTC\') expect 2017-04-10 00:00:00', () => {
+    it('kst.toString(\'UTC\') expect 2017-04-10 00:00:00', () => {
       const form = 'YYYY-MM-DD HH:mm:ss';
       const t = new DateTimeOffset(customTimeKST, {
         timezone: 'KST',
         format: form,
       });
-      expect(t.toString(undefined, 'UTC')).to.be.equal('2017-04-10 00:00:00');
+      expect(t.toString('UTC')).to.be.equal('2017-04-10 00:00:00');
     });
-    it('kst.toString(undefined, \'KST\') expect 2017-04-10 09:00:00', () => {
+    it('kst.toString(\'KST\') expect 2017-04-10 09:00:00', () => {
       const form = 'YYYY-MM-DD HH:mm:ss';
       const t = new DateTimeOffset(customTimeKST, {
         timezone: 'KST',
         format: form,
       });
-      expect(t.toString(undefined, 'KST')).to.be.equal('2017-04-10 09:00:00');
+      expect(t.toString('KST')).to.be.equal('2017-04-10 09:00:00');
     });
-    it('kst.toString(\'YYYY-MM-DD HH:mm:ss\') expect 2017-04-10 00:00:00', () => {
+    it('kst.toString(undefined, \'YYYY-MM-DD HH:mm:ss\') expect 2017-04-10 00:00:00', () => {
       const form = 'YYYY-MM-DD HH:mm:ss';
       const t = new DateTimeOffset(customTimeKST, {
         timezone: 'KST',
         format: form,
       });
-      expect(t.toString(form)).to.be.equal('2017-04-10 00:00:00');
+      expect(t.toString(undefined, form)).to.be.equal('2017-04-10 00:00:00');
     });
-    it('kst.toString(\'YYYY-MM-DD HH:mm:ss\', \'UTC\') expect 2017-04-10 00:00:00', () => {
+    it('kst.toString(\'UTC\', \'YYYY-MM-DD HH:mm:ss\') expect 2017-04-10 00:00:00', () => {
       const form = 'YYYY-MM-DD HH:mm:ss';
       const t = new DateTimeOffset(customTimeKST, {
         timezone: 'KST',
         format: form,
       });
-      expect(t.toString(form, 'UTC')).to.be.equal('2017-04-10 00:00:00');
+      expect(t.toString('UTC', form)).to.be.equal('2017-04-10 00:00:00');
     });
-    it('kst.toString(\'YYYY-MM-DD HH:mm:ss\', \'KST\') expect 2017-04-10 09:00:00', () => {
+    it('kst.toString(\'KST\', \'YYYY-MM-DD HH:mm:ss\') expect 2017-04-10 09:00:00', () => {
       const form = 'YYYY-MM-DD HH:mm:ss';
       const t = new DateTimeOffset(customTimeKST, {
         timezone: 'KST',
         format: form,
       });
-      expect(t.toString(form, 'KST')).to.be.equal('2017-04-10 09:00:00');
+      expect(t.toString('KST', form)).to.be.equal('2017-04-10 09:00:00');
     });
   });
 });
