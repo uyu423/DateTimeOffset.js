@@ -17,6 +17,12 @@ export default class DateTimeOffset {
     if (!tz[timezone]) throw new Error(error.UNSUPPORTED_TZ);
     return this.datetime.tz(tz[timezone]).format(format);
   }
+  addYears(number) {
+    if (arguments.length !== 1) throw new Error(error.REQUIRE_MORE_ARG);
+    if (typeof number !== 'number') throw new Error(error.REQUIRE_NUMBER_ARG);
+    this.datetime.add(number, 'years');
+    return this;
+  }
   addMonth(number) {
     if (arguments.length !== 1) throw new Error(error.REQUIRE_MORE_ARG);
     if (typeof number !== 'number') throw new Error(error.REQUIRE_NUMBER_ARG);
@@ -43,9 +49,6 @@ export default class DateTimeOffset {
     if (typeof number !== 'number') throw new Error(error.REQUIRE_NUMBER_ARG);
     this.datetime.add(number, 'seconds');
     return this;
-  }
-  addYears(number) {
-    throw new Error('addYears undefined');
   }
   static compare(dateTimeOffsetA, dateTimeOffsetB) {
     throw new Error('static compare undefined');
