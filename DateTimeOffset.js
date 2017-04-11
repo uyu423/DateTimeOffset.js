@@ -24,7 +24,10 @@ export default class DateTimeOffset {
     return this;
   }
   addHours(number) {
-    throw new Error('addHours undefined');
+    if (arguments.length !== 1) throw new Error(error.REQUIRE_MORE_ARG);
+    if (typeof number !== 'number') throw new Error(error.REQUIRE_NUMBER_ARG);
+    this.datetime.add(number, 'hours');
+    return this;
   }
   addMinutes(number) {
     throw new Error('addMinutes undefined');
