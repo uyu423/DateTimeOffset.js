@@ -1,5 +1,6 @@
 import momentTimezone from 'moment-timezone';
 import tz from './timezone-consts';
+import error from './error-consts';
 
 const defaultFormat = 'YYYY-MM-DD HH:mm:ss';
 
@@ -13,11 +14,12 @@ export default class DateTimeOffset {
     return this;
   }
   toString(format = defaultFormat, timezone = 'GMT') {
+    if (!tz[timezone]) throw new Error(error.UNSUPPORTED_TZ);
     return this.datetime.tz(tz[timezone]).format(format);
   }
   addDays(number) {
-    if (arguments.length !== 1) throw new Error('addDays require 1 number argument');
-    if (typeof number !== 'number') throw new Error('addDays argument is not typeof number');
+    if (arguments.length !== 1) throw new Error(error.REQUIRE_MORE_ARG);
+    if (typeof number !== 'number') throw new Error(error.REQUIRE_NUMBER_ARG);
     this.datetime.add(number, 'days');
     return this;
   }

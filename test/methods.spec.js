@@ -25,19 +25,19 @@ describe('DateTimeOffset Method Tests', () => {
     });
     it('datetime.addDays(\'aaaa\') expect throw Error', () => {
       const t = new DateTimeOffset(customTime);
-      expect(t.addDays.bind(t, 'aaaa')).to.throw(Error, /not typeof/);
+      expect(t.addDays.bind(t, 'aaaa')).to.throw(Error, /typeof Number/);
     });
     it('datetime.addDays(null) expect throw Error', () => {
       const t = new DateTimeOffset(customTime);
-      expect(t.addDays.bind(t, null)).to.throw(Error, /not typeof/);
+      expect(t.addDays.bind(t, null)).to.throw(Error, /typeof Number/);
     });
     it('datetime.addDays(undefined) expect throw Error', () => {
       const t = new DateTimeOffset(customTime);
-      expect(t.addDays.bind(t)).to.throw(Error, /1 number/);
+      expect(t.addDays.bind(t)).to.throw(Error, /More Argument/);
     });
     it('datetime.addDays(1, 1) expect throw Error', () => {
       const t = new DateTimeOffset(customTime);
-      expect(t.addDays.bind(t, 1, 1)).to.throw(Error, /1 number/);
+      expect(t.addDays.bind(t, 1, 1)).to.throw(Error, /More Argument/);
     });
     it('datetime.addHours(10) expect 2017-04-19 10:00:00');
     it('datetime.addHours(-10) expect 2017-04-09 14:00:00');
