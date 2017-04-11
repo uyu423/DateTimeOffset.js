@@ -57,7 +57,12 @@ export default class DateTimeOffset {
     throw new Error('static compare undefined');
   }
   compareTo(datetimeOffset) {
-    throw new Error('compareTo undefined');
+    if (arguments.length !== 1) throw new Error(error.REQUIRE_MORE_ARG);
+    if (!(datetimeOffset instanceof DateTimeOffset)) {
+      throw new Error(error.REQUIRE_DATETIMEOFFSET_ARG);
+    }
+    const result = this.datetime - datetimeOffset.datetime;
+    return result;
   }
   equals(datetimeOffset) {
     throw new Error('equals undefined');

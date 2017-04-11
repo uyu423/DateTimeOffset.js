@@ -151,12 +151,53 @@ describe('DateTimeOffset Method Tests', () => {
       const t = new DateTimeOffset(customTime);
       expect(t.addMinutes.bind(t)).to.throw(Error, /More Argument/);
     });
-    it(`datetime.compareTo(new DateTimeOffset(${customTime})) expect 0`);
-    it(`datetime.compareTo(new DateTimeOffset(${customTime2})) expect +number`);
-    it(`datetime.compareTo(new DateTimeOffset(${customTime3})) expect -number`);
-    it(`datetime.compareTo(new DateTimeOffset(${customTimeKST}, 'KST')) expect 0`);
-    it(`datetime.compareTo(new DateTimeOffset(${customTime2KST}, 'KST')) expect +number`);
-    it(`datetime.compareTo(new DateTimeOffset(${customTime3KST}, 'KST')) expect -number`);
+    it(`datetime.compareTo(new DateTimeOffset(${customTime})) expect 0`, () => {
+      const t = new DateTimeOffset(customTime);
+      const t2 = new DateTimeOffset(customTime);
+      expect(t.compareTo(t2)).to.be.equal(0);
+    });
+    it(`datetime.compareTo(new DateTimeOffset(${customTime2})) expect +number`, () => {
+      const t = new DateTimeOffset(customTime);
+      const t2 = new DateTimeOffset(customTime2);
+      expect(t.compareTo(t2)).to.be.above(0);
+    });
+    it(`datetime.compareTo(new DateTimeOffset(${customTime3})) expect -number`, () => {
+      const t = new DateTimeOffset(customTime);
+      const t2 = new DateTimeOffset(customTime3);
+      expect(t.compareTo(t2)).to.be.below(0);
+    });
+    it(`datetime.compareTo(new DateTimeOffset(${customTimeKST}, 'KST')) expect 0`, () => {
+      const t = new DateTimeOffset(customTime);
+      const tk = new DateTimeOffset(customTimeKST, {
+        format: 'YYYY-MM-DD HH:mm:ss',
+        timezone: 'KST',
+      });
+      expect(t.compareTo(tk)).to.be.equal(0);
+    });
+    it(`datetime.compareTo(new DateTimeOffset(${customTime2KST}, 'KST')) expect +number`, () => {
+      const t = new DateTimeOffset(customTime);
+      const tk = new DateTimeOffset(customTime2KST, {
+        format: 'YYYY-MM-DD HH:mm:ss',
+        timezone: 'KST',
+      });
+      expect(t.compareTo(tk)).to.be.above(0);
+    });
+    it(`datetime.compareTo(new DateTimeOffset(${customTime3KST}, 'KST')) expect -number`, () => {
+      const t = new DateTimeOffset(customTime);
+      const tk = new DateTimeOffset(customTime3KST, {
+        format: 'YYYY-MM-DD HH:mm:ss',
+        timezone: 'KST',
+      });
+      expect(t.compareTo(tk)).to.be.below(0);
+    });
+    it('datetime.compareTo(undefined) expect throw Error', () => {
+      const t = new DateTimeOffset(customTime);
+      expect(t.compareTo.bind(t)).to.throw(Error, /More Argument/);
+    });
+    it('datetime.compareTo(\'aaaa\') expect throw Error', () => {
+      const t = new DateTimeOffset(customTime);
+      expect(t.compareTo.bind(t, 'yowu')).to.throw(Error, /instanceof DateTimeOffset/);
+    });
     it(`datetime.equals(new DateTimeOffset(${customTime})) expect true`);
     it(`datetime.equals(new DateTimeOffset(${customTime2})) expect false`);
     it(`datetime.equals(new DateTimeOffset(${customTimeKST}, 'KST')) expect true`);
