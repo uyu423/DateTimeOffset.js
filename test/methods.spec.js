@@ -123,6 +123,34 @@ describe('DateTimeOffset Method Tests', () => {
       const t = new DateTimeOffset(customTime);
       expect(t.addYears.bind(t)).to.throw(Error, /More Argument/);
     });
+    it('datetime.addMinutes(10) expect 2017-04-10 00:10:00', () => {
+      const t = new DateTimeOffset(customTime).addMinutes(10);
+      expect(t.toString()).to.be.equal('2017-04-10 00:10:00');
+    });
+    it('datetime.addMinutes(120) expect 2017-04-10 02:00:00', () => {
+      const t = new DateTimeOffset(customTime).addMinutes(120);
+      expect(t.toString()).to.be.equal('2017-04-10 02:00:00');
+    });
+    it('datetime.addMinutes(-10) expect 2017-04-09 23:50:00', () => {
+      const t = new DateTimeOffset(customTime).addMinutes(-10);
+      expect(t.toString()).to.be.equal('2017-04-09 23:50:00');
+    });
+    it('datetime.addMinutes(-120) expect 2017-04-09 22:00:00', () => {
+      const t = new DateTimeOffset(customTime).addMinutes(-120);
+      expect(t.toString()).to.be.equal('2017-04-09 22:00:00');
+    });
+    it('datetime.addMinutes(\'yowu\') expect throw Error', () => {
+      const t = new DateTimeOffset(customTime);
+      expect(t.addMinutes.bind(t, 'yowu')).to.throw(Error, /typeof Number/);
+    });
+    it('datetime.addMinutes(null) expect throw Error', () => {
+      const t = new DateTimeOffset(customTime);
+      expect(t.addMinutes.bind(t, null)).to.throw(Error, /typeof Number/);
+    });
+    it('datetime.addMinutes(undefined) expect throw Error', () => {
+      const t = new DateTimeOffset(customTime);
+      expect(t.addMinutes.bind(t)).to.throw(Error, /More Argument/);
+    });
     it(`datetime.compareTo(new DateTimeOffset(${customTime})) expect 0`);
     it(`datetime.compareTo(new DateTimeOffset(${customTime2})) expect +number`);
     it(`datetime.compareTo(new DateTimeOffset(${customTime3})) expect -number`);
