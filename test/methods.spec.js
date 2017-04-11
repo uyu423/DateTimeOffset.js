@@ -47,23 +47,62 @@ describe('DateTimeOffset Method Tests', () => {
       const t = new DateTimeOffset(customTime).addHours(-10);
       expect(t.toString()).to.be.equal('2017-04-09 14:00:00');
     });
-    it('datetime.addDays(\'aaaa\') expect throw Error', () => {
+    it('datetime.addHours(\'aaaa\') expect throw Error', () => {
       const t = new DateTimeOffset(customTime);
       expect(t.addHours.bind(t, 'aaaa')).to.throw(Error, /typeof Number/);
     });
-    it('datetime.addDays(null) expect throw Error', () => {
+    it('datetime.addHours(null) expect throw Error', () => {
       const t = new DateTimeOffset(customTime);
       expect(t.addHours.bind(t, null)).to.throw(Error, /typeof Number/);
     });
-    it('datetime.addDays(undefined) expect throw Error', () => {
+    it('datetime.addHours(undefined) expect throw Error', () => {
       const t = new DateTimeOffset(customTime);
       expect(t.addHours.bind(t)).to.throw(Error, /More Argument/);
     });
-    it('datetime.addMonth(5) expect 2017-09-10 00:00:00');
-    it('datetime.addMonth(-3) expect 2017-01-10 00:00:00');
-    it('datetime.addSeconds(50) expect 2017-04-10 00:00:50');
-    it('datetime.addSeconds(120) expect 2017-04-10 00:02:00');
-    it('datetime.addSeconds(-50) expect 2017-04-09 23:59:10');
+    it('datetime.addMonth(5) expect 2017-09-10 00:00:00', () => {
+      const t = new DateTimeOffset(customTime).addMonth(5);
+      expect(t.toString()).to.be.equal('2017-09-10 00:00:00');
+    });
+    it('datetime.addMonth(-3) expect 2017-01-10 00:00:00', () => {
+      const t = new DateTimeOffset(customTime).addMonth(-3);
+      expect(t.toString()).to.be.equal('2017-01-10 00:00:00');
+    });
+    it('datetime.addMonth(\'aaaa\') expect throw Error', () => {
+      const t = new DateTimeOffset(customTime);
+      expect(t.addMonth.bind(t, 'aaaa')).to.throw(Error, /typeof Number/);
+    });
+    it('datetime.addMonth(null) expect throw Error', () => {
+      const t = new DateTimeOffset(customTime);
+      expect(t.addMonth.bind(t, null)).to.throw(Error, /typeof Number/);
+    });
+    it('datetime.addMonth(undefined) expect throw Error', () => {
+      const t = new DateTimeOffset(customTime);
+      expect(t.addMonth.bind(t)).to.throw(Error, /More Argument/);
+    });
+    it('datetime.addSeconds(50) expect 2017-04-10 00:00:50', () => {
+      const t = new DateTimeOffset(customTime).addSeconds(50);
+      expect(t.toString()).to.be.equal('2017-04-10 00:00:50');
+    });
+    it('datetime.addSeconds(120) expect 2017-04-10 00:02:00', () => {
+      const t = new DateTimeOffset(customTime).addSeconds(120);
+      expect(t.toString()).to.be.equal('2017-04-10 00:02:00');
+    });
+    it('datetime.addSeconds(-50) expect 2017-04-09 23:59:10', () => {
+      const t = new DateTimeOffset(customTime).addSeconds(-50);
+      expect(t.toString()).to.be.equal('2017-04-09 23:59:10');
+    });
+    it('datetime.addSeconds(\'aaaa\') expect throw Error', () => {
+      const t = new DateTimeOffset(customTime);
+      expect(t.addSeconds.bind(t, 'aaaa')).to.throw(Error, /typeof Number/);
+    });
+    it('datetime.addSeconds(null) expect throw Error', () => {
+      const t = new DateTimeOffset(customTime);
+      expect(t.addSeconds.bind(t, null)).to.throw(Error, /typeof Number/);
+    });
+    it('datetime.addSeconds(undefined) expect throw Error', () => {
+      const t = new DateTimeOffset(customTime);
+      expect(t.addSeconds.bind(t)).to.throw(Error, /More Argument/);
+    });
     it('datetime.addYears(10) expect 2027-04-10 00:00:00');
     it('datetime.addYears(-10) expect 2007-04-10 00:00:00');
     it(`datetime.compareTo(new DateTimeOffset(${customTime})) expect 0`);
