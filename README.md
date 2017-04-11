@@ -63,9 +63,33 @@ t4.toString(undefined, 'KST')  //  2017-04-10 09:00:00
 t4.toString('YYYY-MM-DD')  //  2017-04-10
 ```
 
+### `addYears(number)`
+```javascript
+const t = new DateTimeOffset(new Date('2017-04-10'));
+console.log(t.addYears(10).toString()) // 2027-04-10 00:00:00
+console.log(t.addYears(-20).toString()) // 2007-04-10 00:00:00
+t.addYears(1, 1) // throw Error
+t.addYears('string') // throw Error
+t.addYears(null) // throw Error
+t.addYears(undefined) // throw Error
+```
+
+### `addMonth(number)`
+```javascript
+const t = new DateTimeOffset(new Date('2017-04-10'));
+console.log(t.addMonth(5).toString()) // 2017-09-10 00:00:00
+console.log(t.addMonth(24).toString()) // 2019-09-10 00:00:00
+console.log(t.addMonth(-7).toString()) // 2019-02-10 00:00:00
+console.log(t.addMonth(-12).toString()) // 2018-02-10 00:00:00
+t.addMonth(1, 1) // throw Error
+t.addMonth('string') // throw Error
+t.addMonth(null) // throw Error
+t.addMonth(undefined) // throw Error
+```
+
 ### `addDays(number)`
 ```javascript
-const t = new DateTimeOffset(new Date(2017-04-10));
+const t = new DateTimeOffset(new Date('2017-04-10'));
 console.log(t.addDays(10).toString()); // 2017-04-20 00:00:00
 console.log(t.addDays(-5).toString()); // 2017-04-15 00:00:00
 t.addDays(1, 1) // throw Error
@@ -74,29 +98,50 @@ t.addDays(null) // throw Error
 t.addDays(undefined) // throw Error
 ```
 
-### addHours(number)
+### `addHours(number)`
+```javascript
+const t = new DateTimeOffset(new Date('2017-04-10'));
+console.log(t.addHours(10).toString()) // 2017-04-10 10:00:00
+console.log(t.addHours(14).toString()) // 2017-04-11 00:00:00
+console.log(t.addHours(-10).toString()) // 2017-04-10 14:00:00
+t.addHours(1, 1) // throw Error
+t.addHours('string') // throw Error
+t.addHours(null) // throw Error
+t.addHours(undefined) // throw Error
+```
+
+### `addMinutes(number)`
+```javascript
+const t = new DateTimeOffset(new Date('2017-04-10'));
+console.log(t.addMinutes(10).toString()) // 2017-04-10 00:10:00
+console.log(t.addMinutes(60).toString()) // 2017-04-00 01:10:00
+console.log(t.addMinutes(-130).toString()) // 2017-04-09 23:00:00
+t.addMinutes(1, 1) // throw Error
+t.addMinutes('string') // throw Error
+t.addMinutes(null) // throw Error
+t.addMinutes(undefined) // throw Error
+```
+
+### `addSeconds(number)`
+```javascript
+const t = new DateTimeOffset(new Date('2017-04-10'));
+console.log(t.addSeconds(10).toString()) // 2017-04-10 00:00:10
+console.log(t.addSeconds(60).toString()) // 2017-04-10 00:01:10
+console.log(t.addSeconds(-130).toString()) // 2017-04-09 23:59:00
+t.addSeconds(1, 1) // throw Error
+t.addSeconds('string') // throw Error
+t.addSeconds(null) // throw Error
+t.addSeconds(undefined) // throw Error
+```
+
+### `static compare(DateTimeOffset, DateTimeOffset)`
 - To be developed
 
-### addMinutes(number)
+### `compareTo(DateTimeOffset)`
 - To be developed
 
-### addMonth(number)
+### `equals(DateTimeOffset)`
 - To be developed
 
-### addSeconds(number)
-- To be developed
-
-### addYears(number)
-- To be developed
-
-### static compare(DateTimeOffset, DateTimeOffset)
-- To be developed
-
-### compareTo(DateTimeOffset)
-- To be developed
-
-### equals(DateTimeOffset)
-- To be developed
-
-### static equals(DateTimeOffset, DateTimeOffset)
+### `static equals(DateTimeOffset, DateTimeOffset)`
 - To be developed
