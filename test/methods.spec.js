@@ -198,6 +198,12 @@ describe('DateTimeOffset Method Tests', () => {
       const t = new DateTimeOffset(customTime);
       expect(t.compareTo.bind(t, 'yowu')).to.throw(Error, /instanceof DateTimeOffset/);
     });
+    it('datetime.compareTo(t2, t3) expect throw Error', () => {
+      const t = new DateTimeOffset(customTime);
+      const t2 = new DateTimeOffset(customTime2);
+      const t3 = new DateTimeOffset(customTime3);
+      expect(t.compareTo.bind(t, t2, t3)).to.throw(Error, /Too Many Arguments/);
+    });
     it(`datetime.equals(new DateTimeOffset(${customTime})) expect true`);
     it(`datetime.equals(new DateTimeOffset(${customTime2})) expect false`);
     it(`datetime.equals(new DateTimeOffset(${customTimeKST}, 'KST')) expect true`);

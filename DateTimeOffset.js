@@ -57,7 +57,8 @@ export default class DateTimeOffset {
     throw new Error('static compare undefined');
   }
   compareTo(datetimeOffset) {
-    if (arguments.length !== 1) throw new Error(error.REQUIRE_MORE_ARG);
+    if (arguments.length < 1) throw new Error(error.REQUIRE_MORE_ARG);
+    if (arguments.length > 1) throw new Error(error.TOO_MANY_ARG);
     if (!(datetimeOffset instanceof DateTimeOffset)) {
       throw new Error(error.REQUIRE_DATETIMEOFFSET_ARG);
     }
