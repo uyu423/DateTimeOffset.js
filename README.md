@@ -137,14 +137,33 @@ t.addSeconds(null) // throw Error
 t.addSeconds(undefined) // throw Error
 ```
 
-### `static compare(DateTimeOffset, DateTimeOffset)`
-- To be developed
-
 ### `compareTo(DateTimeOffset)`
-- To be developed
+- Compares to DateTimeOffset and returns the subtracted value
+
+```javascript
+const customTime = '2017-04-10T00:00:00Z';
+const customTime2 = '2017-04-09T23:50:00Z';
+const customTime3 = '2017-04-10T00:10:00Z';
+
+const t = new DateTimeOffset(customTime);
+const t2 = new DateTimeOffset(customTime2);
+const t3 = new DateTimeOffset(customTime3);
+
+console.log(t.compareTo(t)); // 0
+console.log(t.compareTo(t2)); // 600000
+console.log(t.compareTo(t3)); // -600000
+
+t.compareTo(); // throw Error
+t.compareTo(t2, t3); // throw Error
+t.compareTo(new Date()); // throw Error
+t.compareTo('https://fb.com/luckyyowu'); // throw Error
+```
 
 ### `equals(DateTimeOffset)`
 - To be developed
 
+### `static compare(DateTimeOffset, DateTimeOffset)`
+- To be developed
+p
 ### `static equals(DateTimeOffset, DateTimeOffset)`
 - To be developed
