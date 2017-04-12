@@ -41,6 +41,7 @@ const t4 = new DateTimeOffset('2017-04-10 09:00:00', {
 
 ## Methods
 ### `toString(format = 'YYYY-MM-DD HH:mm:ss', timezone = 'GMT')`
+- **The order of the `format` and `timezone` parameters has changed since version 0.3.0.**
 - Default `format` : YYYY-MM-DD HH:mm:ss
 - Default `timezone` : GMT
 
@@ -48,9 +49,10 @@ const t4 = new DateTimeOffset('2017-04-10 09:00:00', {
 const t2 = new DateTimeOffset(new Date('2017-04-10'));
 console.log(t2.timezone) // Atlantic/Reykjavik
 t2.toString()  //  2017-04-10 00:00:00
-t2.toString(undefined, 'UTC')  //  2017-04-10 00:00:00
-t2.toString(undefined, 'KST')  //  2017-04-10 09:00:00
-t2.toString('YYYY-MM-DD')  //  2017-04-10
+t2.toString('UTC')  //  2017-04-10 00:00:00
+t2.toString('KST')  //  2017-04-10 09:00:00
+t2.toString('UTC', 'YYYY-MM-DD')  //  2017-04-10
+t2.toString(undefined, 'YYYY-MM-DD')  //  2017-04-10 timezone default set 'UTC'
 
 const t4 = new DateTimeOffset('2017-04-10 09:00:00', {
   format: 'YYYY-MM-DD HH:mm:ss',
@@ -58,9 +60,10 @@ const t4 = new DateTimeOffset('2017-04-10 09:00:00', {
 });
 console.log(t4.timezone) // Asia/Seoul
 t4.toString()  //  2017-04-10 00:00:00
-t4.toString(undefined, 'UTC')  //  2017-04-10 00:00:00
-t4.toString(undefined, 'KST')  //  2017-04-10 09:00:00
-t4.toString('YYYY-MM-DD')  //  2017-04-10
+t4.toString('UTC')  //  2017-04-10 00:00:00
+t4.toString('KST')  //  2017-04-10 09:00:00
+t4.toString('UTC', 'YYYY-MM-DD')  //  2017-04-10
+t4.toString(undefined, 'YYYY-MM-DD')  //  2017-04-10 timezone default set 'UTC'
 ```
 
 ### `addYears(number)`
